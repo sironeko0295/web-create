@@ -41,69 +41,41 @@
 }
 
 .slider {
-  position:relative;
-  height: 100vh;/*スライダー全体の縦幅を画面の高さいっぱい（100vh）にする*/
-}
-  /*　背景画像設定　*/
-
-.slider-item {
-  width: 100%;/*各スライダー全体の横幅を画面の高さいっぱい（100%）にする*/
-  height:100vh;/*各スライダー全体の縦幅を画面の高さいっぱい（100vh）にする*/
-  background-position: center;/*背景画像の位置を中央に*/
-  background-size: cover;/*背景画像が.slider-item全体を覆い表示*/
+  width: 100%;
+  height: 500px;
+  position: relative; /*重ね合わせる*/
 }
 
-/*矢印の設定*/
-
-/*戻る、次へ矢印の位置*/
-.slick-prev, 
-.slick-next {
-  position: absolute;/*絶対配置にする*/
-  z-index: 3;
-  top: 42%;
-  cursor: pointer;/*マウスカーソルを指マークに*/
-  outline: none;/*クリックをしたら出てくる枠線を消す*/
-  border-top: 2px solid #ccc;/*矢印の色*/
-  border-right: 2px solid #ccc;/*矢印の色*/
-  height: 25px;
-  width: 25px;
+.item{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  /*img-changeという名前のアニメーションを15sかけて実行する*/
+  animation: img-change 5s infinite;
+  opacity: 0;
 }
 
-.slick-prev {/*戻る矢印の位置と形状*/
-  left:2.5%;
-  transform: rotate(-135deg);
+.item:nth-child(1){
+  animation-delay: 0s;
 }
 
-.slick-next {/*次へ矢印の位置と形状*/
-  right:2.5%;
-  transform: rotate(45deg);
+.item:nth-child(2){
+  animation-delay: 2.5s;
 }
 
-/*ドットナビゲーションの設定*/
-
-.slick-dots {
-  position: relative;
-  z-index: 3;
-  text-align:center;
-  margin:-50px 0 0 0;
+.item:nth-child(3){
+  animation-delay: 5s;
 }
 
-.slick-dots li {
-  display:inline-block;
-  margin:0 5px;
+.item img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-.slick-dots button {
-  color: transparent;
-  outline: none;
-  width: 8px;/*ドットボタンのサイズ*/
-  height:16px;/*ドットボタンのサイズ*/
-  display:block;
-  border-radius:50%;
-  background:#ccc;/*ドットボタンの色*/
+@keyframes img-change{
+  0%{opacity: 0;}
+  25%{opacity: 1;}
+  75%{opacity: 1;}
+  100%{opacity: 0;}
 }
-
-.slick-dots .slick-active button{
-  background:#333;/*ドットボタンの現在地表示の色*/
-}
-
